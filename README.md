@@ -1,5 +1,10 @@
 # Installation
 
+Clone the repository including submodules:
+
+	git clone https://github.com/vanhoefm/libwifi-examples.git --recursive
+	cd libwifi-examples
+
 Create a virtual python environmont:
 
 	python3 -m venv venv
