@@ -20,3 +20,4 @@ Load the virtual python environment as root and run any of the examples:
 	source venv/bin/activate
 	./beacon_csa_attack.py wlp0s20f3 PLDTHOMEFIBRa0208 --target 00:11:22:33:44:55
 
+See the [libwifi Tutorials](https://github.com/vanhoefm/libwifi#tutorials) on how to first enable monitor mode etc.
