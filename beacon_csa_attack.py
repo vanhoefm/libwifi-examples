@@ -3,30 +3,6 @@ from libwifi import *
 import argparse
 
 
-def construct_csa(channel, count=1):
-	switch_mode = 1			# STA should not Tx untill switch is completed
-	new_chan_num = channel	# Channel it should switch to
-	switch_count = count	# Immediately make the station switch
-
-	# Contruct the IE
-	payload = struct.pack("<BBB", switch_mode, new_chan_num, switch_count)
-	return Dot11Elt(ID=IEEE_TLV_TYPE_CSA, info=payload)
-
-
-def append_csa(p, channel, count=1):
-	p = p.copy()
-
-	el = p[Dot11Elt]
-	prevel = None
-	while isinstance(el, Dot11Elt):
-		prevel = el
-		el = el.payload
-
-	prevel.payload = construct_csa(channel, count)
-
-	return p
-
-
 def inject_csa_beacon(beacon):
 	channel = orb(get_element(beacon, IEEE_TLV_TYPE_CHANNEL).info)
 	newchannel = 1 if channel >= 6 else 11
